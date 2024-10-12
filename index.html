@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جلسات هفتگی</title>
+    <style>
+        /* تنظیمات عمومی */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            background: linear-gradient(to right, #ff9ff3, #feca57, #48dbfb);
+        }
+
+        /* هدر با دکمه حضور غیاب */
+        .header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            text-align: center;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        .attendance-btn {
+            background: linear-gradient(45deg, #1e272e, #3d3d3d);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .attendance-btn:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #2f3542, #576574);
+        }
+
+        /* لیست جلسات */
+        .sidebar {
+            width: 25%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            color: #2d3436;
+            margin-bottom: 20px;
+        }
+
+        .date-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .date-list li {
+            cursor: pointer;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #74b9ff;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .date-list li:hover {
+            background-color: #55efc4;
+            transform: scale(1.05);
+        }
+
+        /* محتوای جلسه */
+        .content {
+            flex: 1;
+            padding: 80px 40px 20px 40px;
+        }
+
+        .session-content {
+            display: none;
+        }
+
+        .session-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .images img {
+            width: 30%;
+            margin: 5px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* پنجره (Modal) برای نمایش لیست حضور غیاب */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .modal-content img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر با دکمه حضور غیاب -->
+    <div class="header">
+        <button class="attendance-btn" onclick="showModal()">لیست حضور غیاب</button>
+    </div>
+    <!-- لیست جلسات در سمت چپ -->
+    <div class="sidebar">
+        <h2>جلسات</h2>
+        <ul class="date-list">
+            <li onclick="showContent('session1')">1403/01/01</li>
+            <li onclick="showContent('session2')">1403/01/08</li>
+            <li onclick="showContent('session3')">1403/01/15</li>
+            <li onclick="showContent('session4')">1403/01/22</li>
+        </ul>
+    </div>
+
+    <!-- محتوای جلسه -->
+    <div class="content">
+        <div id="session1" class="session-content active">
+            <h3>جلسه تاریخ 1403/01/01</h3>
+            <p>این جلسه در مورد اهداف کلی پروژه بود.</p>
+            <div class="images">
+                <img src="https://via.placeholder.com/300" alt="عکس 1">
+                <img src="https://via.placeholder.com/300" alt="عکس 2">
+                <img src="https://via.placeholder.com/300" alt="عکس 3">
+            </div>
+        </div>
+
+        <div id="session2" class="session-content">
+            <h3>جلسه ۲ - 1403/01/08</h3>
+            <p>بررسی عملکرد هفته گذشته.</p>
+            <div class="images">
+                <img src="https://via.placeholder.com/300" alt="عکس 1">
+                <img src="https://via.placeholder.com/300" alt="عکس 2">
+                <img src="https://via.placeholder.com/300" alt="عکس 3">
+            </div>
+        </div>
+
+        <div id="session3" class="session-content">
+            <h3>جلسه ۳ - 1403/01/15</h3>
+            <p>بحث در مورد چالش‌های موجود.</p>
+            <div class="images">
+                <img src="https://via.placeholder.com/300" alt="عکس 1">
+                <img src="https://via.placeholder.com/300" alt="عکس 2">
+                <img src="https://via.placeholder.com/300" alt="عکس 3">
+            </div>
+        </div>
+        <div id="session4" class="session-content">
+            <h3>جلسه ۴ - 1403/01/22</h3> <!-- عنوان جلسه جدید -->
+            <p>توضیحات مربوط به جلسه جدید.</p> <!-- توضیحات جلسه جدید -->
+            <div class="images">
+                <img src="https://via.placeholder.com/300" alt="عکس 1"> <!-- تصویر 1 -->
+                <img src="https://via.placeholder.com/300" alt="عکس 2"> <!-- تصویر 2 -->
+                <img src="https://via.placeholder.com/300" alt="عکس 3"> <!-- تصویر 3 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- پنجره (Modal) -->
+    <div class="modal" id="attendanceModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <img src="https://filebin.net/4pbrus7yem7s59jy" alt="لیست حضور غیاب جلسه">
+        </div>
+    </div>
+
+    <script>
+        function showModal() {
+            document.getElementById('attendanceModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('attendanceModal').style.display = 'none';
+        }
+
+        function showContent(sessionId) {
+            var contents = document.getElementsByClassName('session-content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            document.getElementById(sessionId).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
