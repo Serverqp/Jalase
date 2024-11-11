@@ -15,30 +15,34 @@
             background: linear-gradient(to right, #ff9ff3, #feca57, #48dbfb);
         }
 
-        /* هدر با دکمه حضور غیاب */
+        /* هدر با دکمه حضور غیاب و اطلاعات */
         .header {
-            width: 140%;
+            width: 95%;
             position: fixed;
             top: 0;
             left: 0;
             text-align: center;
-            padding: 10px;
+            padding: 9px;
             z-index: 10;
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 20px;
         }
 
-        .attendance-btn {
+        .attendance-btn, .info-btn {
             background: linear-gradient(45deg, #1e272e, #3d3d3d);
             color: white;
-            padding: 12px 24px;
+            padding: 8px 16px;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             font-size: 1.2em;
+            margin-left: 10px;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .attendance-btn:hover {
+        .attendance-btn:hover, .info-btn:hover {
             transform: scale(1.1);
             background: linear-gradient(45deg, #2f3542, #576574);
         }
@@ -106,7 +110,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* پنجره (Modal) برای نمایش لیست حضور غیاب */
+        /* پنجره (Modal) برای نمایش لیست حضور غیاب و اطلاعات */
         .modal {
             display: none;
             position: fixed;
@@ -150,11 +154,12 @@
     </style>
 </head>
 <body>
-
-    <!-- هدر با دکمه حضور غیاب -->
+    <!-- هدر با دکمه حضور غیاب و اطلاعات -->
     <div class="header">
-        <button class="attendance-btn" onclick="showModal()">لیست حضور غیاب</button>
+        <button class="attendance-btn" onclick="showModal('attendanceModal')">لیست حضور غیاب</button>
+        <button class="info-btn" onclick="showModal('infoModal')">اطلاعات</button>
     </div>
+
     <!-- لیست جلسات در سمت چپ -->
     <div class="sidebar">
         <h2>جلسات</h2>
@@ -197,16 +202,18 @@
                 <img src="https://raw.githubusercontent.com/Serverqp/test_use/main/Screenshot%20(510).png" alt="عکس 3">
             </div>
         </div>
+
         <div id="session4" class="session-content">
             <h3>1403/08/17 - جلسه 4</h3>
-            <p> این جلسه منزل علی شریفی خواه برگزار شد اجرای نمایش نامه و ایده پردازی برای فاطمیه</p>
+            <p> این جلسه منزل علی شریفی خواه برگزار شد اجرای نمایش نامه و ایده پردازی برای ایام فاطمیه در آن صورت گرفت</p>
             <div class="images">
                 <img src="https://raw.githubusercontent.com/Serverqp/test_use/main/photo14754446371.jpg" alt="عکس 1">
                 <img src="https://raw.githubusercontent.com/Serverqp/test_use/main/photo14753002669.jpg" alt="عکس 2">
             </div>
+        </div>
     </div>
 
-    <!-- پنجره (Modal) -->
+    <!-- پنجره (Modal) برای نمایش لیست حضور غیاب -->
     <div class="modal" id="attendanceModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">×</button>
@@ -214,13 +221,23 @@
         </div>
     </div>
 
-    <script>
-        function showModal() {
-            document.getElementById('attendanceModal').style.display = 'flex';
-        }
+    <!-- پنجره (Modal) برای نمایش اطلاعات -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <img src="https://raw.githubusercontent.com/Serverqp/test_use/main/Screenshot%20(513).png" alt="اطلاعات">
+        </div>
+    </div>
 
+    <script>
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
         function closeModal() {
-            document.getElementById('attendanceModal').style.display = 'none';
+            var modals = document.querySelectorAll('.modal');
+            modals.forEach(function(modal) {
+                modal.style.display = 'none';
+            });
         }
 
         function showContent(sessionId) {
