@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="جلسه پنجشنبه ها, جلسه, جلسه مهدویت, جلسه مهدویت پنجشنبه ها">
     <meta name="google-site-verification" content="CnHP09U7A3XH-dJJSxGr5rx1SQpmiYThyq0eh7fUShI" />
     <meta name="description" content="گزارش کامل جلسات هفتگی، شامل تصاویر اردوها، نمایش‌نامه‌ها و ایده‌های جدید برای برنامه‌ها">
     <title>جلسه پنجشنبه ها</title>
@@ -153,10 +154,36 @@
             font-weight: bold;
             font-size: 1.2em;
         }
+
+        .myket-btn {
+            position: fixed;
+            top: 792px; /* فاصله از بالای صفحه */
+            left: 225px; /* فاصله از سمت چپ صفحه */
+            z-index: 1000; /* اولویت نمایش بالاتر از سایر محتوا */
+        }
+
+        .myket-btn a img {
+            width: 110px; /* اندازه تصویر */
+            height: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px; /* گوشه‌های دکمه گرد شود */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* سایه برای دکمه */
+        }
+
+        .myket-btn a img:hover {
+            transform: scale(1.1); /* بزرگ شدن هنگام هاور */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* سایه قوی‌تر هنگام هاور */
+        }
+
     </style>
     <meta name="google-site-verification" content="gJ5r_sUtg0DhJu6HpNq9NWGY2_fApFyPMeoqEAGsfgE" />
 </head>
 <body>
+    <div class="myket-btn">
+        <a href="https://myket.ir/app/com.app.myapp.tNZCgatXex?utm_source=search-ads-gift&utm_medium=cpc" target="_blank">
+            <img src="https://myket.ir/core/images/logo/get1-fa.png" alt="دریافت از مایکت">
+        </a>
+    </div>
     <!-- هدر با دکمه حضور غیاب و اطلاعات -->
     <div class="header">
         <button class="attendance-btn" onclick="showModal('attendanceModal')">لیست حضور غیاب</button>
@@ -174,6 +201,7 @@
             <li onclick="showContent('session5')">1403/08/24</li>
             <li onclick="showContent('session6')">1403/09/01</li>
             <li onclick="showContent('session7')">1403/09/08</li>
+            <li onclick="showContent('session8')">1403/09/22</li>
         </ul>
     </div>
 
@@ -244,6 +272,16 @@
                         <img src="https://raw.githubusercontent.com/Serverqp/test_use/main/photo15235360878.jpg" alt="عکس 1">
                         <img src="https://raw.githubusercontent.com/Serverqp/test_use/main/photo15235360947.jpg" alt="عکس 2">
                         <img src="https://raw.githubusercontent.com/Serverqp/test_use/main/photo15235361032.jpg" alt="عکس 3">
+                    </div>
+                </div>
+
+                <div id="session8" class="session-content">
+                    <h3>جلسه 1403/09/22</h3>
+                    <p>این جلسه منزل ناجی برگزار شد و درمورد فعالیت انجام نشده فاطمیه صحبت شد و درمورد اینکه انشاالله در ولادت حضرت زهرا جبران بشه هم صحبت شد و درمورد مسائل دیگر</p>
+                    <div class="images">
+                        <img src="https://raw.githubusercontent.com/Serverqp/test_use/main/photo15564237067.jpg" alt="عکس 1">
+                        <img src="https://raw.githubusercontent.com/Serverqp/test_use/main/photo15564444318.jpg" alt="عکس 2">
+                        <img src="https://raw.githubusercontent.com/Serverqp/test_use/main/photo15564444490.jpg" alt="عکس 3">
                     </div>
                 </div>
     </div>
