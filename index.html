@@ -58,7 +58,9 @@
             overflow-y: auto;
             box-shadow: 2px 0 16px rgb(255, 253, 248);
             z-index: 10;
-        }
+    min-width: 110px; /* حداقل عرض */
+    max-width: 120px; /* حداکثر عرض برای کنترل */
+}
 
         .sidebar h2 {
             text-align: center;
@@ -95,7 +97,22 @@
 
         .session-content {
             display: none;
+            .content {
+    overflow-y: auto;
+}
+
+.session-content {
+    padding: 20px;
+    margin: 0 auto; /* وسط‌چین کردن محتوا */
+    padding: 20px;
+    max-width: 90%; /* جلوگیری از افزایش بیش از حد عرض */
+}
+
         }
+        .session-content p {
+    word-wrap: break-word;
+    line-height: 1.6;
+}
 
         .session-content.active {
             display: block;
@@ -156,6 +173,7 @@
             font-weight: bold;
             font-size: 1.2em;
         }
+        
     </style>
     <meta name="google-site-verification" content="gJ5r_sUtg0DhJu6HpNq9NWGY2_fApFyPMeoqEAGsfgE" />
 </head>
